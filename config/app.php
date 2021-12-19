@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Role'),
 
     /*
     |--------------------------------------------------------------------------
@@ -55,6 +55,7 @@ return [
     'url' => env('APP_URL', 'http://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
+    'mix_url' => env('ASSET_URL', null),
 
     /*
     |--------------------------------------------------------------------------
