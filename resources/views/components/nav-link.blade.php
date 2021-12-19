@@ -6,7 +6,7 @@
                 : 'nav-link';
 @endphp
 
-<li class="nav-item d-sm-inline-block">
+<li class="nav-item d-none d-sm-inline-block">
     <a {{ $attributes->merge(['class' => $classes]) }}>
         {{ $slot }}
     </a>
