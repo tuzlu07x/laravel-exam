@@ -4,10 +4,16 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-
-    <div class="card my-4">
+    <div class="card my-5">
         <div class="card-body">
             You're logged in!
         </div>
     </div>
+    <x-slot name="aside">
+        <div class="card my-5">
+            <div class="card-body">
+                You're logged in!
+            </div>
+        </div>
+    </x-slot>
 </x-app-layout>
