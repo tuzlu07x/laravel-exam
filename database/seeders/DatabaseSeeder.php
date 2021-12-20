@@ -2,8 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Quiz;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 
@@ -20,6 +18,7 @@ class DatabaseSeeder extends Seeder
 
             UserSeeder::class,
             QuizSeeder::class,
+            QuestionSeeder::class,
         ]);
        
     }
