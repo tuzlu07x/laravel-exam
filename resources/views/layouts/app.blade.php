@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ mix('css/dashboard.css') }}">
 
     <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    <script src="{{ mix('js/app.js') }}" ></script>
     <script src="{{ mix('js/dashboard.js') }}" defer></script>
 </head>
 
@@ -95,6 +95,9 @@
     </div>
 
     @stack('scripts')
+    @isset($js)
+        {{$js}}
+    @endisset
+    @livewireScripts
 </body>
-
 </html>

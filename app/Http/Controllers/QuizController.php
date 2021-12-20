@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuizRequest;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 
@@ -25,7 +26,7 @@ class QuizController extends Controller
      */
     public function create()
     {
-        dd('sdasd');
+        return view('admin.quiz.create');
     }
 
     /**
@@ -34,9 +35,10 @@ class QuizController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(QuizRequest $request)
     {
-        //
+        Quiz::create($request->post());
+        return redirect()->route('quizzes.index')->with('success','Quiz Başarılı Bir Şekilde Oluşturulmuştur');
     }
 
     /**
@@ -79,8 +81,10 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Quiz $quiz)
     {
-        dd('sdsad');
+        $quiz->delete();
+        return redirect()->route('quizzes.index')->with('success', 'Quiz Başarılı Bir Şekilde Silinmiştir');
+    
     }
 }
