@@ -25,6 +25,11 @@
             </x-slot>
 
             <x-slot name="content">
+                @if (auth()->user()->type=='admin')
+                <x-dropdown-link href="{{ route('quizzes.index') }}">
+                        {{ __('Quizler') }}
+                </x-dropdown-link>
+                @endif
                 <!-- Authentication -->
                 <form method="POST" id="logout-form" action="{{ route('logout') }}">
                     @csrf
