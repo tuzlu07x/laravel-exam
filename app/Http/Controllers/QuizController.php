@@ -60,7 +60,10 @@ class QuizController extends Controller
      */
     public function edit($id)
     {
-        dd('sadasdsa');
+        $quiz =Quiz::find($id) ?? abort(404,'Guiz Bulunamadı');
+        return view('admin.quiz.edit',[
+            'quiz' =>$quiz,
+        ]);
     }
 
     /**
@@ -70,9 +73,12 @@ class QuizController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(QuizRequest $request, $id)
     {
-        //
+        $quiz = Quiz::find($id) ?? abort(404, 'Quiz Bulunamadı');
+        $quiz->update($request->validated());
+        
+        return redirect()->route('quizzes.index')->with('success','Quiz Başarılı Bir Şekilde Güncellenmiştir');
     }
 
     /**

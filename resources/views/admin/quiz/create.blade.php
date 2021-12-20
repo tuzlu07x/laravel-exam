@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">{{ __('Quiz Oluştur') }}</x-slot>
+    <x-slot name="title">{{ __('Quiz Oluştur') }}</x-slot>
     <x-slot name="header">
         <h2 class="h4 font-weight-bold">
             {{ __('Quiz Oluştur') }}

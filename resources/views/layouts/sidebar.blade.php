@@ -1,5 +1,5 @@
 <x-side-accordion title="Operasyon" icon="fas fa-home" :active="request()->routeIs('dashboard')">
-    <x-side-link href="{{ route('dashboard') }}" icon="fas fa-home" :active="request()->routeIs('dashboard')">
+    <x-side-link href="{{ route('quizzes.index') }}" icon="fas fa-diagnoses" :active="request()->routeIs('dashboard')">
         {{ __('Home') }}
     </x-side-link>
 

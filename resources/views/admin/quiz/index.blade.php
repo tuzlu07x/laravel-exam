@@ -17,6 +17,7 @@
                     <th scope="col">{{ __('ID') }}</th>
                     <th scope="col">{{ __('Quiz') }}</th>
                     <th scope="col">{{ __('Durum') }}</th>
+                    <th scope="col">{{ __('Açıklama') }}</th>
                     <th scope="col">{{ __('Bitiş Tarihi') }}</th>
                     <th scope="col">{{ __('İşlemler') }}</th>
                   </tr>
@@ -27,6 +28,7 @@
                     <th scope="row">{{ $quiz->id }}</th>
                     <td>{{ $quiz->title }}</td>
                     <td>{{ $quiz->status }}</td>
+                    <td>{{ $quiz->description }}</td>
                     <td>{{ $quiz->finished_at }}</td>
                     <td>
                         <a href="{{ route('quizzes.edit',$quiz) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
