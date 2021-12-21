@@ -15,7 +15,7 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes=Quiz::paginate(5);
+        $quizzes=Quiz::paginate(5) ?? abort(404, 'Question Bulunamadı');
         return view('admin.quiz.index',compact('quizzes'));
     }
 
