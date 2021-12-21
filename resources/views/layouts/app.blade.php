@@ -98,6 +98,5 @@
     @isset($js)
         {{$js}}
     @endisset
-    @livewireScripts
 </body>
 </html>

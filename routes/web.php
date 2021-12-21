@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
+use App\Http\Controllers\QuestionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,7 @@ Route::get('/dashboard', function () {
 Route::group([
     'middleware' => ['auth','IsAdmin'],'prefix' => 'admin',],function(){
         Route::resource('quizzes', QuizController::class);
+        Route::resource('quiz/{quiz_id}/questions', QuestionController::class);
 
 
        

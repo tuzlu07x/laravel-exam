@@ -17,8 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label>{{__('Açıklama')}}</label>
-                    <textarea type="longtext" name="description" class="form-control" value="{{ $quiz->description }}" 
-                    placeholder="{{__('Quiz Açıklamasını Giriniz')}}" rows="4"></textarea>
+                    <textarea type="longtext" name="description" class="form-control" value="{{ $quiz->description }}"rows="4"></textarea>
                 </div>
                 <div class="form-group">
                     <input id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
