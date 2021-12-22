@@ -20,6 +20,14 @@
                     <textarea type="longtext" name="description" class="form-control" value="{{ $quiz->description }}"rows="4"></textarea>
                 </div>
                 <div class="form-group">
+                    <label>{{__('Quiz Durumu')}}
+                    <select class="form-control" name="status">
+                        <option value="Publish">Aktif</option>
+                        <option value="draft">Taslak</option>
+                        <option value="passive">Pasif</option>
+                    </select>
+                </div
+                <div class="form-group">
                     <input id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
                     <label>{{__('Bitiş Tarihi Olacak mı?')}}</label>
                 </div>
