@@ -21,7 +21,9 @@
                         </select>
                     </div>
                     <div class="col-md-2">
+                        @if(request()->get('title') || request()->get('status') )
                         <a class="btn btn-secondary btn-sm" href="{{ route('quizzes.index') }}"> {{__('Sıfırla') }}</a>
+                        @endif
                     </div>
                 </div>
             </form>
@@ -76,7 +78,7 @@
                   @endforeach
                 </tbody>
             </table>  
-            {{ $quizzes->links() }}            
+            {{ $quizzes->withQueryString()->links() }}            
         </div>
     </div>
 </x-app-layout>
