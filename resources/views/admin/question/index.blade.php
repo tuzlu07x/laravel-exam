@@ -12,7 +12,7 @@
                 <span class="d-none d-sm-inline">{{__('Quizlere Oluştur') }}</span>
             </a>
             <a href=" {{ route('quizzes.index') }} " class="float-left btn btn-sm btn-warning">
-                <i class="fas fa-backspace"></i>                
+                <i class="fas fa-backward"></i>                
                 <span class="d-none d-sm-inline">{{__('Quizlere Dön') }}</span>
             </a>
             <table class="table table-striped">
