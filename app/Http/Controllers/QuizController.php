@@ -15,7 +15,16 @@ class QuizController extends Controller
      */
     public function index()
     {
-        $quizzes=Quiz::withCount('questions')->paginate(5) ?? abort(404, 'Question Bulunamadı');
+        $quizzes=Quiz::withCount('questions') ?? abort(404, 'Question Bulunamadı');
+
+        if(request()->get('title')){
+            $quizzes=$quizzes->where('title','LIKE',"%".request()->get('title')."%");
+        }
+        if(request()->get('status')){
+            $quizzes=$quizzes->where('status',request()->get('status'));
+        }
+        
+        $quizzes=$quizzes->paginate(5);
         return view('admin.quiz.index',compact('quizzes'));
     }
 

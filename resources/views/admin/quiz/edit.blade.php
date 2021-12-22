@@ -23,10 +23,10 @@
                     <label>{{__('Quiz Durumu')}}
                     <select class="form-control" name="status">
                         <option @if($quiz->questions_count < 4) disabled @endif 
-                                @if($quiz->status==='publish') selected @endif 
+                                @if($quiz->status=='publish') selected @endif 
                                 value="publish">Aktif</option>
-                        <option @if($quiz->status==='draft') selected @endif value="draft">Taslak</option>
-                        <option @if($quiz->status==='passive') selected @endif value="passive">Pasif</option>
+                        <option @if($quiz->status=='draft') selected @endif value="draft">Taslak</option>
+                        <option @if($quiz->status=='passive') selected @endif value="passive">Pasif</option>
                     </select>
                 </div>
                 <div class="form-group">
