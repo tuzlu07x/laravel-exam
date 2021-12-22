@@ -17,10 +17,10 @@
                     <th scope="col">{{ __('ID') }}</th>
                     <th scope="col">{{ __('question') }}</th>
                     <th scope="col">{{ __('Resim') }}</th>
-                    <th scope="col">{{ __('Cevap 1') }}</th>
-                    <th scope="col">{{ __('Cevap 2') }}</th>
-                    <th scope="col">{{ __('Cevap 3') }}</th>
-                    <th scope="col">{{ __('Cevap 4') }}</th>
+                    <th scope="col">{{ __('1. Cevap') }}</th>
+                    <th scope="col">{{ __('2. Cevap') }}</th>
+                    <th scope="col">{{ __('3. Cevap') }}</th>
+                    <th scope="col">{{ __('4. Cevap') }}</th>
                     <th scope="col">{{ __('Doğru Cevap') }}</th>
                     <th scope="col" style="width:150px;">{{ __('Durum') }}</th>
                   </tr>
@@ -30,14 +30,31 @@
                   <tr>
                     <th scope="row">{{ $question->id }}</th>
                     <td>{{ $question->question }}</td>
-                    <td>             
-                        <img width="50" height="50" src="{{ asset('/storage/'.$question->image) }}" class="rounded float-start" alt="...">
-                    </td>                    
+                    <td>
+                        @if ($question->image)  
+                            <a href="{{ asset($question->image) }}" class="link">Göster</a>             
+                        @endif                  
+                    </td>  
                     <td>{{ $question->answer1 }}</td>
                     <td>{{ $question->answer2 }}</td>
                     <td>{{ $question->answer3 }}</td>
                     <td>{{ $question->answer4 }}</td>
-                    <td>{{ $question->correct_answer }}</td>
+                    <td>
+                        @switch($question->correct_answer)
+                            @case('answer1')
+                                <span class="badge badge-success">1. Cevap</span>
+                            @break
+                            @case('answer2')
+                                <span class="badge badge-success">2. Cevap</span>
+                            @break 
+                            @case('answer3')
+                                <span class="badge badge-success">3. Cevap</span>
+                            @break 
+                            @case('answer4')
+                                <span class="badge badge-success">4. Cevap</span>
+                            @break
+                        @endswitch
+                    </td>
                     <td>
                         <a href="{{ route('questions.edit',[$question->id, $quiz->id]) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                         <form action="{{ route('questions.destroy',[$question->id, $quiz->id]) }}" method="post" class="d-inline-block">
