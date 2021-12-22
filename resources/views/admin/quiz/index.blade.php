@@ -30,7 +30,7 @@
                     <td>{{ count($quiz->questions) }}</td>
                     <td>
                         @switch($quiz->status)
-                            @case('Publish')
+                            @case('publish')
                                 <span class="badge badge-success">Aktif</span>
                             @break
                             @case('passive')
