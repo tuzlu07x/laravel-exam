@@ -22,11 +22,13 @@
                 <div class="form-group">
                     <label>{{__('Quiz Durumu')}}
                     <select class="form-control" name="status">
-                        <option value="Publish">Aktif</option>
-                        <option value="draft">Taslak</option>
-                        <option value="passive">Pasif</option>
+                        <option @if($quiz->questions_count < 4) disabled @endif 
+                                @if($quiz->status==='publish') selected @endif 
+                                value="publish">Aktif</option>
+                        <option @if($quiz->status==='draft') selected @endif value="draft">Taslak</option>
+                        <option @if($quiz->status==='passive') selected @endif value="passive">Pasif</option>
                     </select>
-                </div
+                </div>
                 <div class="form-group">
                     <input id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
                     <label>{{__('Bitiş Tarihi Olacak mı?')}}</label>

@@ -41,7 +41,7 @@
                             @break                                
                         @endswitch
                     </td>
-                    <td>{{ $quiz->finished_at }}</td>
+                    <td>{{$quiz->finished_at ? $quiz->finished_at->diffForHumans(): '-'}}</td>
                     <td>
                         <a href="{{ route('questions.index',$quiz->id) }}" class="btn btn-sm btn-success"><i class="fas fa-question"></i></a>
                         <a href="{{ route('quizzes.edit',$quiz) }}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>

@@ -7,9 +7,13 @@
     </x-slot>
     <div class="card my-12">
         <div class="card-body">
-            <a href=" {{ route('questions.create',$quiz->id) }} " class="float-left btn btn-sm btn-warning">
+            <a href=" {{ route('questions.create',$quiz->id) }} " class="float-right btn btn-sm btn-warning">
                 <i class="fas fa-plus"></i>
-                <span class="d-none d-sm-inline">{{__('Question Oluştur') }}</span>
+                <span class="d-none d-sm-inline">{{__('Quizlere Oluştur') }}</span>
+            </a>
+            <a href=" {{ route('quizzes.index') }} " class="float-left btn btn-sm btn-warning">
+                <i class="fas fa-backspace"></i>                
+                <span class="d-none d-sm-inline">{{__('Quizlere Dön') }}</span>
             </a>
             <table class="table table-striped">
                 <thead>
