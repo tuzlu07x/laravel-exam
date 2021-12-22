@@ -27,6 +27,7 @@ Route::group([
     'middleware' => ['auth','IsAdmin'],'prefix' => 'admin',],function(){
         Route::resource('quizzes', QuizController::class);
         Route::resource('quiz/{quiz_id}/questions', QuestionController::class);
+        Route::post('quiz/{quiz_id}/questions/{id}',[QuestionController::class, 'destroy'])->whereNumber('id')->name('questions.destroy');
 
 
        

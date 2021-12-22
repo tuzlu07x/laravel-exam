@@ -15,7 +15,8 @@
                 <thead>
                   <tr>
                     <th scope="col">{{ __('ID') }}</th>
-                    <th scope="col">{{ __('Quiz') }}</th>
+                    <th scope="col">{{ __('Quiz Kategorisi') }}</th>
+                    <th scope="col">{{ __('Soru Sayısı') }}</th>
                     <th scope="col">{{ __('Durum') }}</th>
                     <th scope="col">{{ __('Bitiş Tarihi') }}</th>
                     <th scope="col">{{ __('İşlemler') }}</th>
@@ -26,7 +27,20 @@
                   <tr>
                     <th scope="row">{{ $quiz->id }}</th>
                     <td>{{ $quiz->title }}</td>
-                    <td>{{ $quiz->status }}</td>
+                    <td>{{ count($quiz->questions) }}</td>
+                    <td>
+                        @switch($quiz->status)
+                            @case('Active')
+                                <span class="badge badge-success">Aktif</span>
+                            @break
+                            @case('passive')
+                                <span class="badge badge-warning">Pasif</span>
+                            @break
+                            @case('draft')
+                                <span class="badge badge-secondary">Taslak</span>
+                            @break                                
+                        @endswitch
+                    </td>
                     <td>{{ $quiz->finished_at }}</td>
                     <td>
                         <a href="{{ route('questions.index',$quiz->id) }}" class="btn btn-sm btn-success"><i class="fas fa-question"></i></a>

@@ -52,11 +52,11 @@
                 </div>
                 <div class="form-group">
                     <label>{{__('Doğru Cevap')}}</label>
-                    <select type="longtext" name="correct_answer" class="form-control" value="{{old('correct_answer')}}">
+                    <select name="correct_answer" class="form-control" value="{{old('correct_answer')}}">
                         <option @if(old('correct_answer')==='answer1') checked @endif value="answer1">1. Cevap</option>
-                        <option @if(old('correct_answer')==='answer2') checked @endif value="answer1">2. Cevap</option>
-                        <option @if(old('correct_answer')==='answer3') checked @endif value="answer1">3. Cevap</option>
-                        <option @if(old('correct_answer')==='answer4') checked @endif value="answer1">4. Cevap</option>
+                        <option @if(old('correct_answer')==='answer2') checked @endif value="answer2">2. Cevap</option>
+                        <option @if(old('correct_answer')==='answer3') checked @endif value="answer3">3. Cevap</option>
+                        <option @if(old('correct_answer')==='answer4') checked @endif value="answer4">4. Cevap</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -65,17 +65,4 @@
             </form>
         </div>
     </div>
-    <x-slot name="js">
-        <script>
-            $('#isFinished').change(function(){
-                if($('#isFinished').is(':checked')){
-
-                    $('#finishedinput').show();
-                }else{
-
-                    $('#finishedinput').hide();
-                }
-            })
-        </script>
-    </x-slot>
 </x-app-layout>
