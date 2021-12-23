@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\QuestionController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +31,13 @@ Route::group([
         Route::resource('quiz/{quiz_id}/questions', QuestionController::class);
         Route::post('quiz/{quiz_id}/questions/{id}',[QuestionController::class, 'destroy'])->whereNumber('id')->name('questions.destroy');    
 });
+Route::group(['middleware'=>'auth'], function(){
+    Route::get('/front',[FrontController::class, 'index'])->name('front.index');    
+    Route::get('/quiz/detay/{slug}',[FrontController::class, 'quiz_detail'])->name('quiz.detail');    
+    Route::get('/quiz/{slug}',[FrontController::class, 'quiz_join'])->name('quiz.join');    
 
-Route::get('/front', function () {
-    return view('front.index');
 });
+
+
 
 require __DIR__.'/auth.php';

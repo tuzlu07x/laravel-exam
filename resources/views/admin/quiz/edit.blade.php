@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label>{{__('Açıklama')}}</label>
-                    <textarea type="longtext" name="description" class="form-control" value="{{ $quiz->description }}"rows="4"></textarea>
+                    <textarea type="longtext" name="description" class="form-control"rows="4">{{ $quiz->description }}</textarea>
                 </div>
                 <div class="form-group">
                     <label>{{__('Quiz Durumu')}}
@@ -30,7 +30,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <input id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
+                    <input value="{{ $quiz->finished_at }}" id="isFinished" @if($quiz->finished_at) checked @endif type="checkbox">
                     <label>{{__('Bitiş Tarihi Olacak mı?')}}</label>
                 </div>
                 <div id="finishedinput" @if(!$quiz->finished_at) style="display:none" @endif  class="form-group">
