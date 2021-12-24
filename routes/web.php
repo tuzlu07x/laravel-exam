@@ -34,7 +34,9 @@ Route::group([
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/front',[FrontController::class, 'index'])->name('front.index');    
     Route::get('/quiz/detay/{slug}',[FrontController::class, 'quiz_detail'])->name('quiz.detail');    
-    Route::get('/quiz/{slug}',[FrontController::class, 'quiz_join'])->name('quiz.join');    
+    Route::get('/quiz/{slug}',[FrontController::class, 'quiz_join'])->name('quiz.join');   
+    Route::post('/quiz/{slug}/result',[FrontController::class, 'quiz_result'])->name('quiz.result');    
+ 
 
 });
 
