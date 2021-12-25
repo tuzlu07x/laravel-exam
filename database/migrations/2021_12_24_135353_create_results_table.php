@@ -20,10 +20,9 @@ class CreateResultsTable extends Migration
             $table->integer('point');
             $table->integer('correct');
             $table->integer('wrong');
-            $table->timestamps();
-            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('quiz_id')->references('id')->on('quizzes')->onDelete('cascade');
+            $table->timestamps();
             
         });
     }

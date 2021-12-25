@@ -28,7 +28,11 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Puan:
-                    <span class="badge badge-warning badge-pill">{{ $quiz->my_result->point }}</span>
+                    <span class="badge badge-success badge-pill">{{ $quiz->my_result->point }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Doğru-Yanlış Sayısı:
+                    <span class="badge badge-warning badge-pill">D:{{ $quiz->my_result->correct }}-Y:{{ $quiz->my_result->wrong }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     Soru Sayısı:
