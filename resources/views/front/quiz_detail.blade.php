@@ -27,7 +27,11 @@
                     </span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Soru Sayısı
+                    Puan:
+                    <span class="badge badge-warning badge-pill">{{ $quiz->my_result->point }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Soru Sayısı:
                     <span class="badge badge-warning badge-pill">{{ $quiz->questions_count }}</span>
                 </li>
                 <li class="list-group-item d-flex justify-content-between align-items-center">
