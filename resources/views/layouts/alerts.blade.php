@@ -10,3 +10,10 @@
         {{ $error }}
     </div>
 @endforeach
+
+@if (session('warning'))
+    <div class="alert alert-warning">
+        <i class="fas fa-radiation"></i>
+        {{ session('warning') }}
+    </div>
+@endif
