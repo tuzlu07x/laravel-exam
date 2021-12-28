@@ -13,15 +13,15 @@ class Quiz extends Model
 {
     use Sluggable;
 
-    protected $fillable=[
+    protected $fillable = [
         'title',
         'description',
         'finished_at',
         'status',
         'slug',
     ];
-    protected $dates=['finished_at'];
-    protected $appends=['details'];
+    protected $dates = ['finished_at', 'email_verified_at'];
+    protected $appends = ['details'];
 
     use HasFactory;
 
@@ -29,16 +29,14 @@ class Quiz extends Model
     {
         return $this->hasMany(Question::class, 'quiz_id');
     }
-    public function my_result():HasOne
+    public function my_result(): HasOne
     {
-        return $this->hasOne(Result::class,'quiz_id')->where('user_id',auth()->user()->id);
+        return $this->hasOne(Result::class, 'quiz_id')->where('user_id', auth()->user()->id);
     }
     public function result(): HasMany
     {
         return $this->hasMany(Result::class, 'quiz_id');
     }
-
-
 
     public function getFinishedAt($date)
     {
@@ -52,11 +50,19 @@ class Quiz extends Model
             ]
         ];
     }
-    public function getDetailsAttribute(){
-        return [
-        'average' => $this->result()->get()->avg('point'),
-        'join_count' => null,
-        ];
+    public function getDetailsAttribute()
+    {
+        if ($this->result()->count() > 0) {
+            return [
+                'average' => round($this->result()->get()->avg('point')),
+                'join_count' => $this->result()->count(),
+            ];
+        } else {
+            return null;
+        }
     }
-
+    public function topTen()
+    {
+        return $this->result()->OrderByDesc('point')->take(10);
+    }
 }

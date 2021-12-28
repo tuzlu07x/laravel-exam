@@ -5,20 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Answer;
 use App\Models\Quiz;
 use App\Models\Result;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class FrontController extends Controller
 {
     public function index()
     {
-
+        $user = User::first();
         $quizzes = Quiz::where('status', 'publish')->withCount('questions')->paginate(5);
-        return view('front.index', compact('quizzes'));
+        return view('front.index', compact('quizzes', 'user'));
     }
     public function quiz_detail($slug)
     {
-
-       return $quiz = Quiz::whereSlug($slug)->with('my_result','result')->withCount('questions')->first();
+        $quiz = Quiz::whereSlug($slug)->with('my_result', 'topTen.user')->withCount('questions')->first();
         return view('front.quiz_detail', compact('quiz'));
     }
 
@@ -34,6 +34,9 @@ class FrontController extends Controller
         $correct = 0;
         $wrong = 0;
         $quiz = Quiz::with('questions')->withCount('questions')->whereSlug($slug)->first() ?? abort('404', 'Quiz Bulunamadı');
+        if ($quiz->my_result) {
+            return redirect()->route('quiz.detail', $quiz->slug)->with('warning', 'Bu quize Daha önce Katıldınız');
+        }
         foreach ($quiz->questions as $question) {
 
             Answer::create([
@@ -56,6 +59,6 @@ class FrontController extends Controller
             'correct' => $correct,
             'wrong' => $wrong,
         ]);
-        return redirect()->route('quiz.detail',$quiz->slug)->with('success', 'Sınavınız Bitmiştir Puanınız:'.$point);
+        return redirect()->route('quiz.detail', $quiz->slug)->with('success', 'Sınavınız Bitmiştir Puanınız:' . $point);
     }
 }
