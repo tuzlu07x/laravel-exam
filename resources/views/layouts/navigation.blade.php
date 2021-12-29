@@ -5,13 +5,8 @@
         <li class="nav-item">
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
-
-        <x-nav-link href="{{ url('/') }}">
-            <i class="fas fa-home"></i> {{ __('Home') }}
-        </x-nav-link>
-
         <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-            <i class="fas fa-desktop"></i> {{ __('Dashboard') }}
+            <i class="fas fa-desktop"></i> {{ __('Kontrol Paneli') }}
         </x-nav-link>
     </ul>
 

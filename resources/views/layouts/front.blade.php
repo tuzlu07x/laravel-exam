@@ -33,17 +33,18 @@
                     </a>
                 </li>
 
-                <x-nav-link href="{{ url('/') }}">
+                <x-nav-link href="{{ route('front.index') }}">
                     <i class="fas fa-home"></i>
                     <span class="d-none d-sm-inline-block">{{ __('Anasayfa') }}</span>
                 </x-nav-link>
         
-
+                @if(auth()->user()->type=='admin')
                 <x-nav-link href="{{ route('dashboard') }}" icon="fas fa-desktop"
                     :active="request()->routeIs('dashboard')">
                     <i class="fas fa-desktop"></i>
-                    {{ __('Dashboard') }}
+                    {{ __('Kontrol Paneli') }}
                 </x-nav-link>
+                @endif
             </ul>
 
             <!-- Right navbar links -->
