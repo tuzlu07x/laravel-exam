@@ -35,6 +35,12 @@
                         </span>
                     </li>
                 @endif
+                @if ($quiz->my_rank)
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Sırama:
+                    <span class="badge badge-warniing badge-pill">{{ $quiz->my_rank }}</span>
+                </li>
+                @endif
                 @if ($quiz->my_result)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         Puan:

@@ -21,7 +21,7 @@ class Quiz extends Model
         'slug',
     ];
     protected $dates = ['finished_at', 'email_verified_at'];
-    protected $appends = ['details'];
+    protected $appends = ['details','my_rank'];
 
     use HasFactory;
 
@@ -61,6 +61,18 @@ class Quiz extends Model
             return null;
         }
     }
+
+    public function getMyRankAttribute()
+    {
+        $rank = 0;
+        foreach ($this->result()->orderByDesc('point')->get() as $result) {
+            $rank+=1;
+            if (auth()->user()->id == $result->user_id) {
+                return $rank;
+            }
+        }
+    }
+
     public function topTen()
     {
         return $this->result()->OrderByDesc('point')->take(10);
