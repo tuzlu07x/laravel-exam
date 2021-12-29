@@ -24,8 +24,10 @@ class FrontController extends Controller
 
     public function quiz_join($slug)
     {
-
-        $quiz = Quiz::whereSlug($slug)->with('questions')->withCount('questions')->first();
+        $quiz = Quiz::whereSlug($slug)->with('questions.my_answer')->withCount('questions')->first();
+        if ($quiz->my_result) {
+            return view('front.quiz_result', compact('quiz'));
+        }
         return view('front.quiz_join', compact('quiz'));
     }
 
