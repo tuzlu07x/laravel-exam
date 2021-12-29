@@ -10,12 +10,15 @@
             @foreach ($quiz->questions as $question)
                 <div class="form-check">
                     <div align="center" class="form-check">
+                        <small>Sınava Giren Katılımcılar <strong>% {{ $question->true_percent }}</strong> Oranında Doğru Cevapladı</small>
+                        <br>
                         @if ($question->correct_answer == $question->my_answer->answer)
                             <i class="fas fa-check text-success"></i>
                         @else
                             <i class="fas fa-times text-danger"></i>
                         @endif
-                        <strong> #{{ $loop->iteration }} </strong> {{ $question->question }} ?
+                        <strong> #{{ $loop->iteration }} </strong> 
+                        {{ $question->question }} ?
                         <hr>
                     </div>
                     @if (!$question->image == null)
